@@ -1,0 +1,26 @@
+{
+  "name": "flparser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "xPomaHx <gigoroma@yandex.ru>",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.17.0",
+    "mongoose": "^5.3.9",
+    "puppeteer": "^1.10.0",
+    "module-alias": "^2.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
+  },
+  "_moduleAliases": {
+    "@root": "src"
+  }
+}

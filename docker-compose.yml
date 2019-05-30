@@ -1,0 +1,21 @@
+version: '3'
+services:
+  parser:
+    build: parser
+    restart: always
+    ports:
+      - 9998:80
+    environment:
+      - NODE_ENV=development
+    command: npm run dev
+    volumes:
+      - ./parser/src:/app/src/
+  mongo:
+    image: mvertes/alpine-mongo:4.0.6-1
+    restart: always
+    volumes:
+      - ./data/mongo:/data/db
+    logging:
+      driver: none
+    ports:
+      - 27017:27017
