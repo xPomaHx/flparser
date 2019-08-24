@@ -10,6 +10,7 @@ services:
     command: npm run dev
     volumes:
       - ./parser/src:/app/src/
+      - ./data/parser:/app/mocksData/
   mongo:
     image: mvertes/alpine-mongo:4.0.6-1
     restart: always

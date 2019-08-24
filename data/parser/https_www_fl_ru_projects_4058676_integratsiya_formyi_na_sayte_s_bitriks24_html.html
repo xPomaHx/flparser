@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" /><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(3),u=e(4),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],t),e}finally{f.emit("fn-end",[c.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){if(!o)return!1;if(e!==o)return!1;if(!n)return!0;if(!i)return!1;for(var t=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var u=navigator.userAgent,f=u.match(a);f&&u.indexOf("Chrome")===-1&&u.indexOf("Chromium")===-1&&(o="Safari",i=f[1])}n.exports={agent:o,version:i,match:r}},{}],3:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],4:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],5:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=v(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||o(t)}function w(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(3),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!E++){var e=x.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+x.offset],null,"api");var t=l.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===l.readyState&&i()}function i(){f("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-x.offset}var u=(new Date).getTime(),f=e("handle"),c=e(3),s=e("ee"),p=e(2),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1123.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=n.exports={offset:u,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),l[m]?(l[m]("DOMContentLoaded",i,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",o),d[v]("onload",r)),f("mark",["firstbyte",u],null,"api");var E=0,O=e(5)},{}]},{},["loader"]);</script>
+        <meta content="initial-scale=1, width=device-width, user-scalable=no" name="viewport" />
+
+        
+<meta name="description" lang="ru" content="Работа на дому: Интеграция формы на сайте с Битрикс24 - нужен программист, резюме программиста, требуется программист" />
+<meta name="keywords" lang="ru" content="фриланс, фрилансер, freelance, Веб программисты удаленно, нужен программист, резюме программиста, требуется программист, резюме веб программиста" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="fb:app_id" content="1417314125245378" />
+<meta property="fp:pages" content="172294939454798" />
+<meta property="og:url" content="https://www.fl.ru/projects/4058676/integratsiya-formyi-na-sayte-s-bitriks24.html" />
+    <link rel="canonical" href="https://www.fl.ru/projects/4058676/integratsiya-formyi-na-sayte-s-bitriks24.html" />
+<title>Интеграция формы на сайте с Битрикс24 : нужен программист, фриланс, FL.ru</title>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-W8DQCVQ');</script>
+    <!-- End Google Tag Manager -->
+<script type="text/javascript">
+    var ___WDCPREFIX = 'https://st.fl.ru';
+    var CKEDITOR_BASEPATH = '/scripts/ckedit/';
+    var _TOKEN_KEY = '21d65618b894ad7f81c3a08999b4c2c6';
+    var _UID = 0;
+    var _EMP = false;
+        window.ga_events = { queue: [], send: function() { this.queue.push(arguments); } }
+</script>
+<meta content="FL.ru" name="apple-mobile-web-app-title">
+            <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://st.fl.ru/images/favicons/apple-touch-icon-57x57.png" />
+            <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://st.fl.ru/images/favicons/apple-touch-icon-72x72.png" />
+            <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://st.fl.ru/images/favicons/apple-touch-icon-114x114.png" />
+            <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://st.fl.ru/images/favicons/apple-touch-icon-120x120.png" />
+            <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://st.fl.ru/images/favicons/apple-touch-icon-144x144.png" />
+            <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://st.fl.ru/images/favicons/apple-touch-icon-152x152.png" />
+    
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+<script type="text/javascript">
+    var _NEW_TEMPLATE = true;
+        var _SHORT_CAROUSEL = true;
+            var _G_HELP_ID = 21;
+    var CUSTOM_TARGET = '';
+CUSTOM_TARGET = 'unauth;unpro;unverif';
+</script>
+
+                                                                                                                                                                                                                                                                        
+                                        
+        
+                        
+        
+        
+                <link type="text/css" href="https://st.fl.ru/wdstatic/0f91224ad2a1ac105795b3fae3303074_1560262137.css" rel="stylesheet" charset="utf-8"/>
+        <link type="text/css" href="https://st.fl.ru/wdstatic/578076095e33c04a6a5133c040b3af40_1560262137.css" rel="stylesheet" charset="utf-8"/>
+
+        
+                
+        
+    </head>
+        <body  class="b-page u-guest chrome ">
+                    <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8DQCVQ"
+                          height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+    
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(6051055, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/6051055" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+    <script type="text/javascript">
+        function yaCounter6051055reachGoal(p) {
+            try {
+                yaCounter6051055.reachGoal(p);
+            } catch(e) { }
+        }
+    </script>
+    <!-- /Yandex.Metrika counter -->
+
+        <div class="b-bar b-bar_fixed">                                    
+<div class="l-outer">
+    
+    <header class="l-header">
+        <div class="l-header-inside">
+        
+            <section class="l-header-section l-header-first-section">
+        
+                <span class="b-logo">
+                    <a href="/"  class="b-logo-link" title="На главную">FL.ru</a>
+                </span>
+                                <ul class="b-primary-menu">
+                    <li class="b-primary-menu-clause b-primary-menu-tasks-clause">
+                        <a data-ga-event="{ec: 'user', ea: 'main_menu_clicked',el: 'projects'}" href="/projects/" class="b-primary-menu-clause-link" title="Список проектов для фрилансеров">Работа</a>
+                    </li>
+                    <li class="b-primary-menu-clause b-primary-menu-employees-clause">
+                        <a data-ga-event="{ec: 'user', ea: 'main_menu_clicked',el: 'freelancers'}" href="/freelancers/" class="b-primary-menu-clause-link" title="Каталог фрилансеров">Фрилансеры</a>
+                    </li>
+                    <li class="b-primary-menu-clause b-primary-menu-competitions-clause">
+                        <a data-ga-event="{ec: 'user', ea: 'main_menu_clicked',el: 'konkurs'}" href="/konkurs/" class="b-primary-menu-clause-link" title="Список конкурсов для фрилансеров">Конкурсы</a>
+                    </li>
+                    <li class="b-primary-menu-clause b-primary-menu-vacancy-clause">
+                        <a data-ga-event="{ec: 'user', ea: 'main_menu_clicked',el: 'vacancy'}" href="/projects/?kind=4" class="b-primary-menu-clause-link" title="Список вакансий для фрилансеров">Вакансии</a>
+                    </li>
+                    <li class="b-primary-menu-clause b-primary-menu-search-clause ">
+                        <a data-ga-event="{ec: 'user', ea: 'main_menu_clicked',el: 'search'}" href="/search/" class="b-primary-menu-clause-link" title="Поиск по сайту">Поиск</a>
+                    </li>
+                    <li class="b-primary-menu-clause b-primary-menu-additional-clause">
+                        <div class="b-dropdown b-primary-menu-dropdown" data-dropdown="true" data-dropdown-descriptor="primary-menu">
+                            <a href="#" class="b-dropdown-opener" data-dropdown-opener="true" title="Навигация">Еще</a>
+                            <div class="b-dropdown-concealment g-hidden" data-dropdown-concealment="true">
+                                <ul class="b-dropdown-concealment-options">
+                                    <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-tasks-clause">
+                                        <a data-ga-event="{ec: 'user', ea: 'main_menu_clicked',el: 'projects'}" href="/projects/" class="b-dropdown-concealment-options-clause-link" title="Список проектов для фрилансеров">Работа</a>
+                                    </li>
+                                    <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-employees-clause">
+                                        <a data-ga-event="{ec: 'user', ea: 'main_menu_clicked',el: 'freelancers'}" href="/freelancers/" class="b-dropdown-concealment-options-clause-link" title="Каталог фрилансеров">Фрилансеры</a>
+                                    </li>
+                                    <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-competitions-clause">
+                                        <a data-ga-event="{ec: 'user', ea: 'main_menu_clicked',el: 'konkurs'}" href="/konkurs/" class="b-dropdown-concealment-options-clause-link" title="Список конкурсов для фрилансеров">Конкурсы</a>
+                                    </li>
+                                     <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-vacancy-clause">
+                                         <a data-ga-event="{ec: 'user', ea: 'main_menu_clicked',el: 'vacancy'}" href="/projects/?kind=4" class="b-dropdown-concealment-options-clause-link" title="Список вакансий для фрилансеров">Вакансии</a>
+                                     </li>
+                                    <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-search-clause">
+                                        <a data-ga-event="{ec: 'user', ea: 'main_menu_clicked',el: 'search'}" href="/search/" class="b-dropdown-concealment-options-clause-link" title="Поиск по сайту">Поиск</a>
+                                    </li>
+                                                                        <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-reclam-clause">
+                                         <a data-ga-event="{ec: 'user', ea: 'main_menu_clicked',el: 'promo_adv'}" href="/promo/adv/" class="b-dropdown-concealment-options-clause-link" title="Реклама на сайте">Реклама на сайте</a>
+                                    </li>
+                                    <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-reclam-clause">
+                                         <a data-ga-event="{ec: 'user', ea: 'main_menu_clicked',el: 'partner'}" href="/partner/" class="b-dropdown-concealment-options-clause-link" title="Партнерская программа">Партнерская программа</a>
+                                    </li>
+                                    <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-faq-clause">
+                                        <noindex><a data-ga-event="{ec: 'user', ea: 'main_menu_clicked',el: 'help'}" onmouseover="UE.Popin.preload();" onclick="UE.Popin.show(); return false;" rel="nofollow" target="_blank"  href="https://feedback.fl.ru/" class="b-dropdown-concealment-options-clause-link" title="Помощь">Помощь</a></noindex>
+                                    </li>
+                                    <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-faq-clause">
+                                        <noindex><a data-ga-event="{ec: 'user', ea: 'main_menu_clicked',el: 'promo_mbm'}" rel="nofollow" target="_blank" href="/promo/mbm/" class="b-dropdown-concealment-options-clause-link" title="Малый бизнес Москвы">Малый бизнес Москвы</a></noindex>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="b-primary-menu">
+                    <li class="b-primary-menu-clause b-primary-menu-faq-clause">
+                        <noindex><a rel="nofollow" target="_blank" href="https://feedback.fl.ru/" class="b-primary-menu-clause-link" title="Помощь">Помощь</a></noindex>
+                    </li>
+                </ul>
+                                                <div class="b-dropdown b-identification-dropdown b-dropdown__login" data-dropdown="true" data-dropdown-descriptor="identification">
+                    <a href="/registration/" class="b-dropdown-opener" data-dropdown-opener="true" title="Вход или регистрация">Вход или регистрация</a>
+                    <div class="b-dropdown-concealment" data-dropdown-concealment="true">
+                        
+                         <form id="lfrm" class="b-form b-authorization-form g-cleared" method="post" action="/login/">
+                            <section class="b-form-section b-form-social-section b-form-section_center b-form-section_maxwidth_820  b-layout_hide">
+                                <a href="/auth/?param=vkontakte" class="b-auth_btn b-auth_medium b-auth_btn_vk" data-ga-event='{ec: "user", ea: "login_vk_clicked"}'></a>
+                                <a href="/auth/?param=facebook" class="b-auth_btn b-auth_medium b-auth_btn_facebook" data-ga-event='{ec: "user", ea: "login_fb_clicked"}'></a>
+                                <a href="/auth/?param=odnoklassniki" class="b-auth_btn b-auth_medium b-auth_btn_odnoklassniki" data-ga-event='{ec: "user", ea: "login_ok_clicked"}'></a>
+                                <div class="b-layout b-layout__txt b-layout__txt_padtop_10 b-auth_delimitter b-auth_delimitter_white">
+                                    <span>или</span>
+                                </div>
+                            </section>
+
+                                                        <section class="b-form-section b-form-send-section">
+                                <a data-ga-event="{&quot;ec&quot;:&quot;user&quot;,&quot;ea&quot;:&quot;registration_button2_clicked&quot;}" data-ga-on="click" href="/login/" class="b-medium-button b-green-medium-button">Войти</a>
+                            </section>    
+                                                        
+                            <section class="b-form-section b-form-social-section b-form-section_minwidth_821">
+                                <span class="b-form-text">или</span>
+                                <a href="/auth/?param=vkontakte" class="b-auth_btn b-auth_mini b-auth_btn_vk" data-ga-event='{ec: "user", ea: "login_vk_clicked"}'></a>
+                                <a href="/auth/?param=facebook" class="b-auth_btn b-auth_mini b-auth_btn_facebook" data-ga-event='{ec: "user", ea: "login_fb_clicked"}'></a>
+                                <a href="/auth/?param=odnoklassniki" class="b-auth_btn b-auth_mini b-auth_btn_odnoklassniki" data-ga-event='{ec: "user", ea: "login_ok_clicked"}'></a>
+                            </section>
+                    
+                            <section class="b-form-section b-form-registration-section">
+                                <a href="/registration/" class="b-form-registration-link" title="Регистрация">Регистрация</a>
+                            </section>
+                        </form>
+                        
+                    </div>
+                </div>
+                            </section>
+    
+        </div>
+    </header>
+</div>
+</div>
+        <div class="b-page__wrapper">
+            <div class="b-page__inner">
+                <div class="b-page__page b-page__page_padtop_20_r600 b-page__page_padtop_75_r1000 b-page__page_padtop_60">
+                                        <div style="height: 100px;" class="b-layout b-layout_relative b-layout_padbot_20 b-layout__desktop">
+                        <div class="b-layout_center" id="banner_top" data-sid="194290"></div>
+                    </div>
+                    
+                    
+                    
+                                            
+                    
+                </div>
+
+
+
+                    <div class="b-layout b-layout__page " style="margin-top:0px">
+                                                    <div class="body">
+                                <div class="main">
+                                                        <a name="top"></a>
+                                
+<script type="text/javascript" charset="UTF-8">
+/* <![CDATA[ */
+try { if (undefined == xajax.config) xajax.config = {}; } catch (e) { xajax = {}; xajax.config = {}; };
+xajax.config.requestURI = "/xajax/projects_anon.server.php?rnd=1301096625";
+xajax.config.statusMessages = false;
+xajax.config.waitCursor = true;
+xajax.config.version = "xajax 0.5 rc1";
+xajax.config.legacy = false;
+xajax.config.defaultMode = "asynchronous";
+xajax.config.defaultMethod = "POST";
+/* ]]> */
+</script>
+<script type="text/javascript" charset="UTF-8">
+var U_TOKEN_KEY = "21d65618b894ad7f81c3a08999b4c2c6";
+</script>
+<script type="text/javascript" src="/xajax/xajax_js/xajax_core.js?v=241013" charset="UTF-8"></script>
+<script type="text/javascript" charset="UTF-8">
+/* <![CDATA[ */
+window.setTimeout(
+ function() {
+  var scriptExists = false;
+  try { if (xajax.isLoaded) scriptExists = true; }
+  catch (e) {}
+  if (!scriptExists) {
+   alert("Error: the xajax Javascript component could not be included. Perhaps the URL is incorrect?\nURL: /xajax/xajax_js/xajax_core.js");
+  }
+ }, 40000);
+/* ]]> */
+</script>
+
+<script type='text/javascript' charset='UTF-8'>
+/* <![CDATA[ */
+xajax_getSimilarProjects = function() { return xajax.request( { xjxfun: 'getSimilarProjects' }, { parameters: arguments } ); };
+xajax_anonOffer = function() { return xajax.request( { xjxfun: 'anonOffer' }, { parameters: arguments } ); };
+xajax_anonOfferForm = function() { return xajax.request( { xjxfun: 'anonOfferForm' }, { parameters: arguments } ); };
+xajax_anonOfferValidate = function() { return xajax.request( { xjxfun: 'anonOfferValidate' }, { parameters: arguments } ); };
+xajax_getFreeLoginByEmail = function() { return xajax.request( { xjxfun: 'getFreeLoginByEmail' }, { parameters: arguments } ); };
+/* ]]> */
+</script>
+<div class="b-layout b-layout_padbot_30">
+    <h3 class="b-layout__title b-layout__title_fs18 b-layout__title_lh_1 b-layout__title_padbot_20 b-layout__title_center">
+        Бесплатно зарегистрируйся и получай уведомления о новых проектах по работе
+    </h3>
+    <div class="b-layout__txt b-layout__txt_center">
+        <a data-social="vkontakte"    href="/auth/?param=vkontakte"
+   class="b-auth_btn b-auth_btn_flat b-auth_btn_vkontakte b-auth_btn_h40 ">ВКонтакте</a>
+<a data-social="facebook"    href="/auth/?param=facebook"
+   class="b-auth_btn b-auth_btn_flat b-auth_btn_facebook b-auth_btn_h40 ">Facebook</a>
+<a data-social="odnoklassniki"    href="/auth/?param=odnoklassniki"
+   class="b-auth_btn b-auth_btn_flat b-auth_btn_odnoklassniki b-auth_btn_h40 ">Одноклассники</a>
+<span class="b-auth_btn b-auth_btn_txt b-auth_btn_marg_9_5">или <a href="/registration/">зарегистрироваться по e-mail</a></span>
+    </div>
+</div>
+
+      <div class="b-layout">
+    <div class="b-free-share" style="height:25px; float:right; width:260px; padding-top:2px;">
+        <div class="b-free-share__icons b-free-share__icons_float_right"> 
+						  <span class="b-free-share__txt b-free-share__txt_top_7">Поделиться:</span>
+						  <span id="yashare" class="b-free-share__yashare" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,lj,gplus,blogger" data-yashareTitle="" data-yashareLink="https://www.fl.ru/projects/4058676/integratsiya-formyi-na-sayte-s-bitriks24.html"></span><span
+						   class="b-free-share__pinterest"><a href="http://pinterest.com/pin/create/button/?url=https%3A%2F%2Fwww.fl.ru%2Fprojects%2F4058676%2Fintegratsiya-formyi-na-sayte-s-bitriks24.html&description=" class="pin-it-button" count-layout="none" target="_blank"></a></span></div><div class="b-free-share__like b-free-share__like_padleft_10">
+						  <div id="fb-root"></div>
+						  <div class="fb-like" data-href="https%3A%2F%2Fwww.fl.ru%2Fprojects%2F4058676%2Fintegratsiya-formyi-na-sayte-s-bitriks24.html" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div><script type="text/javascript" src="https://st.fl.ru/scripts/yandex/share.js" charset="utf-8"></script><script type='text/javascript'>
+                var YaShareInstance = new Ya.share({
+                    element: 'yashare',
+                    link: 'https://www.fl.ru/projects/4058676/integratsiya-formyi-na-sayte-s-bitriks24.html',
+                    /*description: ' - <a href=\"https://www.fl.ru/projects/4058676/integratsiya-formyi-na-sayte-s-bitriks24.html\">читать дальше...</a>',*/
+                    serviceSpecific: {
+                        vkontakte: {
+                            /*title: '',*/
+                            title: ''
+                        },
+                        blogger: {
+                            title: ' читать дальше...'
+                        },
+                        twitter: {
+                            title: '',
+                            link: 'https://www.fl.ru/projects/4058676'
+                        },
+                        yaru: {
+                            title: ' читать дальше...'
+                        },
+                        lj: {
+                            link: ' - <a href=\"https://www.fl.ru/projects/4058676/integratsiya-formyi-na-sayte-s-bitriks24.html\">читать дальше...</a>'
+                        },
+                        blogger: {
+                            description: ''
+                        }
+                    },
+                    elementStyle: {
+                        type: 'none',
+                        quickServices: ['yaru','vkontakte','facebook','twitter','lj','gplus','blogger','pinterest']
+                    }
+                });
+            </script></div>    </div>
+  </div>
+
+
+
+<h1 class="b-page__title" id="prj_name_4058676">
+    Интеграция формы на сайте с Битрикс24</h1>
+
+
+<div class="b-layout b-layout_float_right b-layout_width_240 b-page__desktop">
+    <script type="text/javascript">document.write('');</script><div id="banner_wrap" class="b-layout b-layout_relative">
+    <div id="b-banner_fix">
+            <div class="b-banner b-banner_layout_vert">
+                        <script type="text/javascript">window.getBannerTargeting = function() { return CUSTOM_TARGET; }</script>
+            <div id="banner_right_side" data-sid="194290"></div>
+                        <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_center">
+                <noindex>
+                    <a rel="nofollow" class="b-layout__link b-layout__link_fontsize_11 b-layout__link_color_0f71c8" href="/promo/adv/#btn2" target="_blank">
+                        Реклама на этом месте
+                    </a>
+                </noindex>
+            </div>
+        </div>
+        </div>
+</div></div>
+
+<div class="b-layout b-layout_margright_270 b-layout_marg_null_ipad">
+    <table class="b-layout__table b-layout__table_width_full b-layout__table_bordbot_df b-layout__table_2bordtop_df b-layout__table_margbot_20">
+   <tr class="b-layout__tr">
+      <td class="b-layout__td b-layout__td_width_60 b-layout__td_padtb_10 b-layout__td_ipad">
+                    <div class="lpl-avatar nsv_anonym">c</div>
+                </td>
+      <td class="b-layout__td b-layout__td_padtb_10 b-layout__td_ipad">
+          <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold b-layout__txt_padbot_5">
+                                <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_6db335">Заказчик</span> 
+                                    
+              
+
+                        </div>
+
+          
+        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_5">
+                    <span class="b-layout_block_iphone">Отзывы фрилансеров:</span>
+                            <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_6db335">+&nbsp;11</span>
+                <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_808080">0</span>
+                <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_c10600">-&nbsp;0</span>
+                            </div>
+          
+        <div class="b-layout__txt b-layout__txt_fontsize_11">
+            Зарегистрирован на сайте <span class="b-layout_block_iphone">5 лет и 11 месяцев</span>
+        </div>
+      </td>
+      <td class="b-layout__td b-layout__td_padtb_10 b-layout__td_right b-layout__td_ipad">
+          
+                       <div class="b-layout__txt b-layout__txt_fontsize_18 b-layout__txt_fontsize_13_iphone">
+                                   Бюджет:
+                  <span class="b-layout__bold">
+                                             2000 ₽                                        </span>
+                </div>
+                        
+          
+	             <div class="b-layout__txt b-layout__txt_fontsize_11">31&nbsp;$&nbsp;—&nbsp;27.38&nbsp;&euro;</div>
+                
+      </td>
+   </tr>
+</table><div id="project_info_4058676" class="b-layout b-layout_padleft_60 b-layout_2bordbot_dfdfdf0 b-layout_margbot_30">
+
+    
+    <div class="b-layout b-layout_overflow_hidden b-layout_margbot_10">
+                
+        	        
+        
+        <div id="projectp4058676" class="b-layout__txt b-layout__txt_padbot_20">
+            Добрый день. Требуется интеграция форм веб сайта с Битрикс24 по api или через вебхук(по вашему усмотрению). <br /> <br />Пишите пожалуйста цену за час работы. А также примеры форм, котроые интегрировали.         </div>
+        
+        
+                
+        
+                    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold">
+                Разделы:
+            </div>
+            <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_20">
+                <a href="/freelancers/programmirovanie/" >Программирование</a> / <a href="/freelancers/web-programmist-programmirovanie/" >Веб-программирование</a>            </div>
+
+                            
+        <div class="b-layout__txt b-layout__txt_padbot_30">
+            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_fontsize_11">
+                Опубликован:
+            </div>
+            <div class="b-layout__txt b-layout__txt_fontsize_11">
+                11.06.2019 | 20:11                  
+                  
+            </div>
+             
+                         
+        </div>
+
+    </div>
+    
+    
+    
+    
+
+    <div class="b-buttons b-buttons_padbot_30">
+        
+                
+                            <div class="modal fade" id="anonOfferPopup"  tabindex="-1" role="dialog">
+  </div>            
+            <a class="b-button b-button_flat b-button_flat_green" 
+                            href="/registration/?from_prj=4058676" data-backdrop="static" data-toggle="modal" data-target="#anonOfferPopup" data-modal-ajax="anonOfferForm" data-modal-params="N4058676|N37|S021854f2545158f108fe0cd0021b70ea|S{&quot;ga_category&quot;:&quot;offer_create_old&quot;,&quot;ga_prefix&quot;:&quot;_anon&quot;}" 
+                            data-ga-event="[{ec: 'offer_create_old', ea: 'offer_anon_show'}, {ec: 'user', ea: 'project_answer_button_clicked', el:'4058676'}]" data-ga-on="click"
+                            >
+                Ответить на проект                            </a>&#160;&#160;&#160;
+                            
+        <span class="b-layout__txt b-layout__txt_valign_middle">
+                         <a data-ga-event="{ec: 'user', ea: 'project_analog_button_clicked', el: '4058676'}"
+                class='b-layout__link' 
+                href="/public/?step=1&kind=1">Опубликовать аналогичный проект</a>&#160;&#160;
+               
+            <a class='b-layout__link' href="/projects/">
+                Посмотреть другие проекты            </a>
+        </span>
+    </div>
+    
+    
+    
+
+     
+
+</div>
+<script type="text/javascript">
+    xajax_getSimilarProjects(4058676,'4c3cdd29802c6153e3330f925f6343a3');
+</script>
+<div id="similar_projects" class="b-layout b-layout_marg_null_ipad"></div>
+</div>
+
+<div class="b-layout b-layout_padtop_20">
+    <h2 class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_666 b-layout_top_100 b-layout__txt_padbot_10 b-layout__txt_weight_normal">
+        Теги: Веб программисты удаленно, нужен программист, резюме программиста, требуется программист, резюме веб программиста    </h2>
+</div>
+                                                        </div>
+                            </div>
+                                            </div>
+                                            <div id="i-footer" class="i-footer ">
+    <div class="b-footer">
+        <div class="b-footer__top" >
+            <div class="b-footer__col b-footer__col_copy">
+                <h4 class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_bold b-layout__txt_color_646464">FL.ru | Free-lance.ru © 2005–2019</h4>
+                <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_11">
+                   Наши партнеры
+                   <div class="b-layout__txt b-layout__txt_padtop_5">
+                      <a class="b-footer__dizkon" href="http://www.dizkon.ru/" target="_blank"></a>
+                   </div>
+                </div>
+                                <div class="b-footer__rambler"> 
+                    <!-- begin of Top100 logo --> 
+                    <p class="b-footer__txt">
+                        <script type="text/javascript">document.write('Участник <noindex><a rel="nofollow" class="b-footer__link" href="http://top100.rambler.ru/home?id=1367737" target="_blank">Rambler\'s Top100</a></noindex>');</script>
+                    </p>
+                    <!-- begin of Top100 logo --> 
+                    <!-- end of Top100 logo --> 
+                </div>
+                                  <div class="b-social">
+                     <div class="b-layout__txt b-layout__txt_fontsize_11 b-txt_padbot_5">Мы в социальных сетях:</div>
+                     <ul class="b-social__list">
+                        <li class="b-social__item"><a class="b-social__link b-social__link_f" target="_blank" href="http://www.facebook.com/freelanceru"></a></li>
+                        <li class="b-social__item"><a class="b-social__link b-social__link_v" target="_blank" href="http://vk.com/free_lanceru"></a></li>
+                        <li class="b-social__item"><a class="b-social__link b-social__link_o" target="_blank" href="http://www.odnoklassniki.ru/freelanceru"></a></li>
+                        <li class="b-social__item"><a class="b-social__link b-social__link_t" target="_blank" href="https://twitter.com/free_lanceru"></a></li>
+                        <li class="b-social__item"><a class="b-social__link b-social__link_g" target="_blank" href="https://plus.google.com/+Free-lanceru/"></a></li>
+                        <li class="b-social__item"><a class="b-social__link b-social__link_i" target="_blank" href="https://www.linkedin.com/company/free-lance-ru"></a></li>
+                     </ul>
+                  </div>
+                
+                                <!-- tns-counter.ru --> 
+                <script type="text/javascript">
+                        var img = new Image();
+                        img.src = '//www.tns-counter.ru/V13a***R>' + document.referrer.replace(/\*/g,'%2a') + '*hh_ru/ru/CP1251/tmsec=hh_free-lance/';
+                </script>
+                <noscript>
+                <div><img class="b-footer__counter" src="//www.tns-counter.ru/V13a****hh_ru/ru/CP1251/tmsec=hh_free-lance/"  alt="" /></div>
+                </noscript>
+                <!--/ tns-counter.ru --> 
+                
+                <!-- begin of Top100 code --> 
+                <noindex><a rel="nofollow" class="b-footer__link" style="position:absolute; left:-9999px;" href="http://top100.rambler.ru/top100/"><img class="b-footer__counter" src="//counter.rambler.ru/top100.cnt?1367737" alt="Rambler's Top100"   /></a> </noindex>
+                <!-- end of Top100 code --> 
+                            </div>
+            
+                        <div class="b-footer__col b-footer__col_user">
+				<h4 class="b-footer__h4"><a class="b-footer__link" href="/registration/" target="_blank">Профиль</a></h4>				
+                <ul class="b-footer__list">
+					    <li class="b-footer__item"><a class="b-footer__link" href="/login/" target="_blank">Войти</a></li>
+					    <li class="b-footer__item"><a class="b-footer__link" data-ga-event="{&quot;ec&quot;:&quot;user&quot;,&quot;ea&quot;:&quot;registration_button4_clicked&quot;}" data-ga-on="click" href="/registration/" target="_blank">Зарегистрироваться</a></li>
+					    <li class="b-footer__item"><a class="b-footer__link" href="/remind/" target="_blank">Восстановить доступ</a></li>
+					    <li class="b-footer__item"><a class="b-footer__link" href="https://feedback.fl.ru/knowledge-bases/2/articles/17325-poshagovaya-instruktsiya-novichkam-frilanseram" target="_blank">Рекомендации Исполнителям</a></li>
+					    <li class="b-footer__item"><a class="b-footer__link" href="https://feedback.fl.ru/knowledge-bases/2/articles/17306-poshagovaya-instruktsiya-novichkam-rabotodatelyam" target="_blank">Рекомендации Заказчикам</a></li>
+                </ul>
+            </div>            
+            <div class="b-footer__col b-footer__col_project b-page__desktop">
+				<h4 class="b-footer__h4"><a class="b-footer__link" href="/freelancers/" target="_blank">Выбрать исполнителя</a></h4>				
+                <ul class="b-footer__list">
+                   <li class="b-footer__item"><a class="b-footer__link" href="/public/?step=1&kind=1&red=" target="_blank">Опубликовать проект</a></li>
+                   <li class="b-footer__item"><a class="b-footer__link" href="/public/?step=1&kind=4&red=" target="_blank">Разместить вакансию</a></li>
+                   <li class="b-footer__item"><a class="b-footer__link" href="/public/?step=1&kind=7&red=" target="_blank">Устроить конкурс</a></li>
+                </ul>
+            </div>
+                        <div class="b-footer__col b-footer__col_project b-page__desktop">
+                <h4 class="b-footer__h4"><a class="b-footer__link" href="/service/" target="_blank">Сервисы</a></h4>
+                <ul class="b-footer__list">
+                    <li class="b-footer__item"><a class="b-footer__link" href="/search/" target="_blank">Поиск по сайту</a></li>
+                    <li class="b-footer__item"><a class="b-footer__link" href="/promo/bezopasnaya-sdelka" target="_blank">Безопасная сделка</a></li>
+                    <li class="b-footer__item"><a class="b-footer__link" href="/payed/" target="_blank">Аккаунт PRO</a></li>
+                                           <li class="b-footer__item"><a class="b-footer__link" href="https://feedback.fl.ru/knowledge-bases/2/articles/17305-platnyie-optsii-v-proektah" target="_blank">Платные опции в проектах</a></li>
+                       <li class="b-footer__item"><a class="b-footer__link" href="/promo/adv/" target="_blank">Реклама на сайте</a></li>
+                                    </ul>
+            </div>
+            
+            <div class="b-footer__col b-footer__col_help">
+				<h4 class="b-footer__h4"><a class="b-footer__link" href="/about/" target="_blank">О сайте</a></h4>
+
+                <ul class="b-footer__list">
+                     <li class="b-footer__item">
+                        <a class="b-footer__link" href="https://feedback.fl.ru/" onmouseover="UE.Popin.preload();" onclick="UE.Popin.show(); return false;">Помощь</a>                       
+                     </li>					
+                     <li class="b-footer__item">
+                        <a class="b-footer__link" href="/about/appendix_2_regulations.pdf" >Правила </a>                       
+                     </li>	
+                                          <li class="b-footer__item">
+                        <a class="b-footer__link" href="/about/team/" >Команда</a>                       
+                     </li>					
+                     <li class="b-footer__item">
+                        <a class="b-footer__link" href="/press/contacts/" >Контакты</a>                       
+                     </li>
+                     <li class="b-footer__item">
+                        <a class="b-footer__link" href="/clients/">Клиенты</a>                       
+                     </li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<script type='text/javascript'>
+
+var _ues = {
+host:'feedback.fl.ru',
+forum:'27458',
+lang:'ru',
+tab_show:false,
+};
+
+(function() {
+    var _ue = document.createElement('script'); _ue.type = 'text/javascript'; _ue.async = true;
+    _ue.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.userecho.com/js/widget-1.4.gz.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(_ue, s);
+  })();
+
+</script>
+                                    </div><!--b-page__page-->
+            </div>
+        </div>
+        
+        <div id="popups_container">
+                    </div>
+
+                    <script type="text/javascript" src="https://st.fl.ru/wdstatic/9801d39e910f3d2b965a37af3e5e1771_1560262137.js" charset="utf-8"></script>
+<script type="text/javascript" src="https://st.fl.ru/wdstatic/c10e6af9fade16684be48dd6d918f72a_1499545529.js" charset="utf-8"></script>
+            <script type="text/javascript" src="https://st.fl.ru/wdstatic/9e8c337b3d6251326e4597a072478ecb_1560262137.js" charset="utf-8"></script>
+            
+            <script type='text/javascript'>
+    var _gaq = _gaq || [];
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-163162-4', 'auto');
+    
+    ga(function (tracker) {
+        var clientId = tracker.get('clientId');
+        document.cookie = "_ga_cid=" + clientId + "; path=/";
+        ga('set', 'dimension1', clientId);
+    });
+
+    ga('set','dimension2','[g5],[p37]');
+
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+</script>        
+        
+        <script type="text/javascript">
+            window.addEvent('domready', function() {
+                CSRF(_TOKEN_KEY);
+                            });
+        </script>
+
+        <script type='text/javascript'>
+    window.addEvent('domready', function() {
+            });
+</script>
+
+<script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function() {
+    var gads = document.createElement('script');
+    gads.async = true;
+    gads.type = 'text/javascript';
+    var useSSL = 'https:' == document.location.protocol;
+    gads.src = (useSSL ? 'https:' : 'http:') + 
+    '//www.googletagservices.com/tag/js/gpt.js';
+    var node = document.getElementsByTagName('script')[0];
+    node.parentNode.insertBefore(gads, node);
+    })();
+</script>
+
+<script type='text/javascript'>
+    googletag.cmd.push(function() {
+    googletag.pubads().setTargeting("acctype", ["unauth"]);
+    var gadsSlotTopBar = googletag.defineSlot('/49966680/FL_TopBar', [1280, 40], 'div-gpt-ad-1397483810125-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().addEventListener('slotRenderEnded', function(event) { 
+        if (event.slot == gadsSlotTopBar)
+        {
+            var gadsIframe = document.getElementById('google_ads_iframe_' + event.slot.c + '_0');
+            gadsIframe.width = '100%';
+            
+            var gadsWidthAdjustmentFn = function() {        
+                var gadsFlashInlineDiv = gadsIframe.contentDocument.getElementById('google_flash_inline_div');
+                if (gadsFlashInlineDiv)
+                {
+                    gadsFlashInlineDiv.style.width = '100%';
+                    gadsIframe.contentDocument.getElementById('google_flash_div').style.right = '0px';
+                    gadsIframe.contentDocument.getElementById('google_flash_obj').style.width = '100%';
+                    gadsIframe.contentDocument.getElementById('google_flash_embed').style.width = '100%';
+                }
+            };
+            
+            var gadsIframeWindow = gadsIframe.contentWindow || gadsIframe.contentDocument.parentWindow;
+            gadsIframeWindow.onload = gadsWidthAdjustmentFn;
+            gadsWidthAdjustmentFn();
+        }
+    });
+    googletag.enableServices();
+    });
+</script>
+
+<!-- Rating@Mail.ru counter -->
+<script type="text/javascript">
+var _tmr = window._tmr || (window._tmr = []);
+_tmr.push({id: "2730876", type: "pageView", start: (new Date()).getTime()});
+(function (d, w, id) {
+  if (d.getElementById(id)) return;
+  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+  //ts.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//top-fwz1.mail.ru/js/code.js";
+  ts.src = 'https://st.fl.ru/scripts/mailru/code.js';
+  var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window, "topmailru-code");
+</script><noscript><div style="position:absolute;left:-10000px;">
+<img src="//top-fwz1.mail.ru/counter?id=2730876;js=na" style="border:0;" height="1" width="1" alt="Рейтинг@Mail.ru" />
+</div></noscript>
+<!-- //Rating@Mail.ru counter -->
+
+
+            <script src="https://www.artfut.com/static/tagtag.min.js?campaign_code=14fd71484c" async onerror='var self = this;window.ADMITAD=window.ADMITAD||{},ADMITAD.Helpers=ADMITAD.Helpers||{},ADMITAD.Helpers.generateDomains=function(){for(var e=new Date,n=Math.floor(new Date(2020,e.getMonth(),e.getDate()).setUTCHours(0,0,0,0)/1e3),t=parseInt(1e12*(Math.sin(n)+1)).toString(30),i=["de"],o=[],a=0;a<i.length;++a)o.push({domain:t+"."+i[a],name:t});return o},ADMITAD.Helpers.findTodaysDomain=function(e){function n(){var o=new XMLHttpRequest,a=i[t].domain,D="https://"+a+"/";o.open("HEAD",D,!0),o.onload=function(){setTimeout(e,0,i[t])},o.onerror=function(){++t<i.length?setTimeout(n,0):setTimeout(e,0,void 0)},o.send()}var t=0,i=ADMITAD.Helpers.generateDomains();n()},window.ADMITAD=window.ADMITAD||{},ADMITAD.Helpers.findTodaysDomain(function(e){if(window.ADMITAD.dynamic=e,window.ADMITAD.dynamic){var n=function(){return function(){return self.src?self:""}}(),t=n(),i=(/campaign_code=([^&]+)/.exec(t.src)||[])[1]||"";t.parentNode.removeChild(t);var o=document.getElementsByTagName("head")[0],a=document.createElement("script");a.src="https://www."+window.ADMITAD.dynamic.domain+"/static/"+window.ADMITAD.dynamic.name.slice(1)+window.ADMITAD.dynamic.name.slice(0,1)+".min.js?campaign_code="+i,o.appendChild(a)}});'></script>
+        
+            
+
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 936848510;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/936848510/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<script type="text/javascript">
+(function()
+{ var ra = document.createElement('script'); ra.type = 'text/javascript'; ra.async = true; ra.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'bn.adblender.ru/c/fl/all.js?' + Math.floor((new Date()).valueOf()/1000/3600); var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ra, s); }
+)();
+</script>
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+ fbq('init', '350324042196326'); 
+fbq('track', 'PageView');
+</script>
+<noscript>
+ <img height="1" width="1" 
+src="https://www.facebook.com/tr?id=350324042196326&ev=PageView
+&noscript=1"/>
+</noscript>
+
+<script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>
+<script type="text/javascript">
+window.criteo_q = window.criteo_q || [];
+var deviceType = /iPad/.test(navigator.userAgent) ? 't' : /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator.userAgent) ? 'm' : 'd';
+window.criteo_q.push(
+ { event: 'setAccount', account: 54787},
+ { event: 'setEmail', email: '' },
+ { event: 'setSiteType', type: deviceType},
+ { event: "viewItem", item: "5" }
+);
+</script> 
+
+
+
+
+        
+                <script type="text/javascript" src="https://adnous.ru/cdn/3097.js"></script>
+            <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"52195390c3","applicationID":"8814888","transactionName":"ZQEHYERQV0sEUEcIXVxLMEZfHklKCllWAkZBSwxaUlRBFhVbQw==","queueTime":0,"applicationTime":50,"atts":"SUYEFgxKREU=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

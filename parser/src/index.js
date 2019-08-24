@@ -1,8 +1,6 @@
 'use strict'
 require('module-alias/register')
 ;(async () => {
-  const { sleep } = require('./helpers')
-
   process.setMaxListeners(0)
   process.on('unhandledRejection', (reason, p) => {
     console.log('Unhandled Rejection at: Promise', p, 'reason:', reason)
@@ -10,57 +8,18 @@ require('module-alias/register')
 
   // const puppeteer = require('puppeteer')
   const mongoose = require('mongoose')
-  const config = require('./config')
   // const Word = require(__dirname + '/models/Word.js')
-  const Post = require('./models/Post.js')
+  const Post = require('@root/models/Post.js')
   // mongoose.set('debug', true);
-  const mongooseconnection = mongoose.connect('mongodb://mongo/parser')
-  await mongooseconnection
+  let mongooseconnection = null
+  while (!mongooseconnection) {
+    mongooseconnection = mongoose.connect('mongodb://mongo/parser').catch(null)
+    await mongooseconnection
+    if (!mongooseconnection) {
+      console.dir('mongooseconnection not ready')
+    }
+  }
   // let mongooseconnection = mongoose.connect("mongodb+srv://admin:admin@cluster0-ltqg3.gcp.mongodb.net/test?retryWrites=true");
-
-  const GeneratorGetCatalogUrl = async function*(getCatalogUrlByPage) {
-    let numPage = 1
-    let { maxNumberCatPage = 10 } = config
-    while (maxNumberCatPage--) {
-      yield await getCatalogUrlByPage(numPage)
-      numPage++
-    }
-  }
-
-  const getActualCatLinks = async getCatalogUrlByPage => {
-    const getCatalogUrl = GeneratorGetCatalogUrl(getCatalogUrlByPage)
-    const { catalogPageMatchBreak = 3 } = config
-    let catalogPageMatchBreakCurrent = 0
-    for await (let links of getCatalogUrl) {
-      let posts = await Post.find({ url: { $in: Object.keys(links) } })
-        .limit(Object.keys(links).length)
-        .exec()
-      for (let post of posts) {
-        delete links[post.url]
-      }
-      if (!Object.keys(links).length) {
-        catalogPageMatchBreakCurrent++
-      } else {
-        catalogPageMatchBreakCurrent = 0
-      }
-      console.dir('add:' + Object.keys(links).length)
-      if (Object.keys(links).length) {
-        var bulk = Post.collection.initializeUnorderedBulkOp()
-        for (let url in links) {
-          bulk
-            .find({ url })
-            .upsert()
-            .updateOne({ url })
-        }
-        await bulk.execute({ w: 0 })
-      }
-      if (catalogPageMatchBreakCurrent === catalogPageMatchBreak) {
-        break
-      }
-      const { timeBetweenCatDown = 5555 } = config
-      await sleep(timeBetweenCatDown)
-    }
-  }
 
   const express = require('express')
   const app = express()
@@ -76,39 +35,33 @@ require('module-alias/register')
     })
     res.json(posts)
   })
+  const getPage = require('@root/jobs/downloadProjectPages')
   app.get('/getPage', async function(req, res) {
-    res.json(1)
-    const { getDataFromProjectPage } = require('@root/providers/flru')
-    let posts = await Post.find(
-      { title: { $exists: false } },
-      { url: 1 },
-      { limit: 0 }
-    ).exec()
-    let count = posts.length
-    for (let post of posts) {
-      console.dir(post.url)
-      console.time('DownTime')
-      await getDataFromProjectPage(post)
-      post.getMetaData()
-      await post.save()
-      let { timeBetweenPostDown = 5555 } = config
-      await sleep(timeBetweenPostDown)
-      if (post.title) {
-        console.dir(post.title)
-      }
-      console.timeEnd('DownTime')
-      console.dir(count--)
-    }
+    res.json(await getPage())
+    // await getPage()
     console.dir('end')
-    // res.json(posts)
   })
+
+  const getCat = require('@root/jobs/downloadCatalogPages')
+
   app.get('/getCat', async function(req, res) {
     res.json('endgetActualCatLinks')
-    const { getCatalogUrlByPage } = require('@root/providers/flru')
-    await getActualCatLinks(getCatalogUrlByPage)
+    await getCat()
     console.dir('endgetActualCatLinks')
   })
   app.listen(80)
+  /*
+  ;(async () => {
+    const { sleep } = require('@root/helpers')
+    console.dir('Start infinity jobs')
+    while (true) {
+      await getCat()
+      await sleep(1000 * 60 * 1)
+      await getPage()
+      await sleep(1000 * 60 * 30)
+    }
+  })()
+  */
   /*
   только платно
   https://www.fl.ru
