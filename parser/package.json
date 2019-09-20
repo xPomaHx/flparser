@@ -11,11 +11,12 @@
   },
   "license": "ISC",
   "dependencies": {
+    "buffer-json": "2.0.0",
+    "iconv-lite": "0.5.0",
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.17.0",
     "mongoose": "^5.3.9",
-    "puppeteer": "^1.10.0",
     "module-alias": "^2.2.0",
     "form-data": "^2.3.3",
     "query-string": "^6.7.0"

@@ -1,4 +1,4 @@
-const axiosClient = require('@root/axiosClient')
+const axiosClient = require('@root/common/axiosClient')
 const cheerio = require('cheerio')
 
 module.exports = (function() {

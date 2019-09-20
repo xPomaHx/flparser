@@ -1,4 +1,4 @@
-const { sleep } = require('@root/helpers')
+const { sleep } = require('@root/common/helpers')
 const config = require('@root/config')
 const Post = require('@root/models/Post.js')
 const providers = require('@root/providers')

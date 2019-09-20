@@ -4,7 +4,7 @@ const writeFile = promisify(fs.writeFile)
 const readFile = promisify(fs.readFile)
 const unlink = promisify(fs.unlink)
 const path = require('path')
-const axiosClient = require('@root/axiosClient')
+const axiosClient = require('@root/common/axiosClient')
 const querystring = require('query-string')
 
 module.exports = class {
@@ -23,8 +23,7 @@ module.exports = class {
   async get() {
     await this.read()
     if (this._cookies) return this._cookies
-    console.dir('notread')
-    await this.fetch()
+    await this._fetch()
     await this.save()
     return this._cookies
   }
@@ -46,6 +45,11 @@ module.exports = class {
   async fetch() {
     console.dir('notSET')
     throw new Error('not set fetch function on coockee geter')
+  }
+  async _fetch() {
+    let cookies = await this.fetch()
+    this._cookies = cookies
+    return cookies
   }
   async delete() {
     delete this._cookies

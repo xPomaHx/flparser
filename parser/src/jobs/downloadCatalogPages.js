@@ -1,5 +1,5 @@
 const config = require('@root/config')
-const { sleep } = require('@root/helpers')
+const { sleep } = require('@root/common/helpers')
 const Post = require('@root/models/Post.js')
 
 const GeneratorGetCatalogUrl = async function*(provider) {

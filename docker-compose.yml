@@ -11,6 +11,26 @@ services:
     volumes:
       - ./parser/src:/app/src/
       - ./data/parser:/app/mocksData/
+  api:
+    build: api
+    restart: always
+    ports:
+      - 9997:80
+    environment:
+      - NODE_ENV=development
+    command: npm run dev
+    volumes:
+      - ./api/src:/app/src/
+  front:
+    build: front
+    restart: always
+    ports:
+      - 9996:80
+    environment:
+      - NODE_ENV=development
+    command: npm run dev
+    volumes:
+      - ./front/src:/app/src/
   mongo:
     image: mvertes/alpine-mongo:4.0.6-1
     restart: always
