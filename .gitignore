@@ -1,10 +1,16 @@
 # Logs
+.vscode
 logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
+node_modules/
+data/
+config.js
+package-lock.json
+yarn.lock
+yarn-error.log
 # Runtime data
 pids
 *.pid
@@ -59,7 +65,7 @@ typings/
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
-
+.vscode
 # next.js build output
 .next
 
@@ -77,3 +83,6 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+# dbtempfile
+data
